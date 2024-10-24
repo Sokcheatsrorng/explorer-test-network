@@ -29,7 +29,7 @@ trap "popd > /dev/null" EXIT
 . scripts/utils.sh
 
 : ${CONTAINER_CLI:="docker"}
-: ${CONTAINER_CLI_COMPOSE:="${CONTAINER_CLI}-compose"}
+: ${CONTAINER_CLI_COMPOSE:="${CONTAINER_CLI} compose"}
 infoln "Using ${CONTAINER_CLI} and ${CONTAINER_CLI_COMPOSE}"
 
 # Obtain CONTAINER_IDS and remove them
@@ -96,6 +96,7 @@ function checkPrereqs() {
     if [[ $? -ne 0 ]]; then
       errorln "fabric-ca-client binary not found.."
       errorln
+
       errorln "Follow the instructions in the Fabric docs to install the Fabric Binaries:"
       errorln "https://hyperledger-fabric.readthedocs.io/en/latest/install.html"
       exit 1
